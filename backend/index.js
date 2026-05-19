@@ -7,7 +7,7 @@ app.listen(3000, ()=> {
 })
 
 
-app.get('/finanzas',(req, res)=> {
+app.get('/Alexander_Benavides',(req, res)=> {
     res.send('<h1>Hola soy una app de finanzas</h1>')
 
 })
