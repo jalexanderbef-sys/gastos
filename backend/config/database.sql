@@ -40,3 +40,4 @@ SELECT
 FROM transacciones t
 INNER JOIN categorias c
     ON t.categoria_id = c.cat_id;
+    
