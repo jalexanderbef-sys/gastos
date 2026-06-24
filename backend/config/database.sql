@@ -1,19 +1,10 @@
-
 CREATE DATABASE gastos;
 USE gastos;
-
--- ==========================================
--- TABLA: CATEGORIAS
--- ==========================================
 
 CREATE TABLE categorias (
     cat_id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL UNIQUE
 );
-
--- ==========================================
--- TABLA: TRANSACCIONES
--- ==========================================
 
 CREATE TABLE transacciones (
     ts_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -31,10 +22,6 @@ CREATE TABLE transacciones (
         ON DELETE RESTRICT
 );
 
--- ==========================================
--- REGISTRO DE CATEGORÍAS
--- ==========================================
-
 INSERT INTO categorias (nombre)
 VALUES
 ('Alimentacion'),
@@ -46,10 +33,6 @@ VALUES
 ('Educacion'),
 ('Entretenimiento'),
 ('Otros');
-
--- ==========================================
--- REGISTRO DE TRANSACCIONES DE PRUEBA
--- ==========================================
 
 INSERT INTO transacciones (
     descripcion,
@@ -69,10 +52,6 @@ VALUES
 ('Salida a cine', 45000, 8, '2026-06-12', 'GASTO'),
 ('Trabajo freelance', 500000, 9, '2026-06-10', 'INGRESO');
 
--- ==========================================
--- CONSULTAR TODAS LAS TRANSACCIONES
--- ==========================================
-
 SELECT
     ts.ts_id,
     ts.descripcion,
@@ -86,27 +65,15 @@ INNER JOIN categorias c
     ON ts.categoria_id = c.cat_id
 ORDER BY ts.ts_id DESC;
 
--- ==========================================
--- TOTAL DE INGRESOS
--- ==========================================
-
 SELECT
     SUM(monto) AS total_ingresos
 FROM transacciones
 WHERE tipo = 'INGRESO';
 
--- ==========================================
--- TOTAL DE GASTOS
--- ==========================================
-
 SELECT
     SUM(monto) AS total_gastos
 FROM transacciones
 WHERE tipo = 'GASTO';
-
--- ==========================================
--- SALDO DISPONIBLE
--- ==========================================
 
 SELECT
 (
